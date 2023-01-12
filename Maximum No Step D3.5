@@ -1,0 +1,41 @@
+def minJumps(arr, n):
+	if (n <= 1):
+		return 0
+	if (arr[0] == 0):
+		return -1
+	jump = 1
+	subArrEndIndex = arr[0]
+
+	i = 1
+	subArrFistHalfMaxSteps = 0
+	subArrSecondHalfMaxSteps = 0
+	for i in range(1, n):
+
+		subArrEndIndex = i + subArrEndIndex
+		if (subArrEndIndex >= n):
+			return jump
+                firstHalfMaxStepIndex = 0
+		j = i
+		for j in range(i, subArrEndIndex):
+			stepsCanCover = arr[j] + j
+			if (subArrFistHalfMaxSteps < stepsCanCover):
+				subArrFistHalfMaxSteps = stepsCanCover
+				subArrSecondHalfMaxSteps = 0
+				firstHalfMaxStepIndex = j
+			elif(subArrSecondHalfMaxSteps < stepsCanCover):
+				subArrSecondHalfMaxSteps = stepsCanCover
+		i = j
+		firstHalfMaxStepIndex = 0
+		j = i
+		for j in range(i, subArrEndIndex):
+			stepsCanCover = arr[j] + j
+			if (subArrFistHalfMaxSteps < stepsCanCover):
+				subArrFistHalfMaxSteps = stepsCanCover
+				subArrSecondHalfMaxSteps = 0
+				firstHalfMaxStepIndex = j
+			elif(subArrSecondHalfMaxSteps < stepsCanCover):
+				subArrSecondHalfMaxSteps = stepsCanCover
+		i = j
+
+		if (i > subArrFistHalfMaxSteps):
+			return -1
