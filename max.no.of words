@@ -1,0 +1,6 @@
+countOfWords = len("Geeksforgeeks is best Computer Science Portal".split())
+print("Count of Words in the given Sentence:", countOfWords)
+
+print(len("Geeksforgeeks is best Computer Science Portal".split()))
+
+print(len(input("Enter Input:").split()))
